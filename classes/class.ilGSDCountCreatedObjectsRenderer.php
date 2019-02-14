@@ -16,6 +16,9 @@ class ilGSDCountCreatedObjectsRenderer extends BaseTypeRenderer {
 	 * Just return the UI-Component for your Special type
 	 */
 	public function getComponentForItem(isItem $item): Component {
-		return $item->getContent();
+		/**
+		 * @var $item ilGSDCountCreatedObjects
+		 */
+		return $item->getStringWithTheAmountOfCreatedILIASObjectsInThisSessionAsComponent();
 	}
 }
