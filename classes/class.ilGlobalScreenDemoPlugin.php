@@ -2,7 +2,7 @@
 
 /* Copyright (c) 1998-2009 ILIAS open source, Extended GPL, see https://github.com/ILIAS-eLearning/ILIAS/tree/trunk/docs/LICENSE */
 
-use ILIAS\GlobalScreen\Provider\StaticProvider\AbstractStaticPluginMainMenuProvider;
+use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
@@ -55,12 +55,7 @@ class ilGlobalScreenDemoPlugin extends ilEventHookPlugin {
 
 
 	/**
-	 * This is the relevant Method in every Plugin to provide your own MainMenu-Items-Provider.
-	 * You MUST extend from the AbstractStaticPluginMainMenuProvider.
-	 *
-	 * @see ilGSDProvider
-	 *
-	 * @return AbstractStaticPluginMainMenuProvider
+	 * @return \ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider|void
 	 */
 	public function promoteGlobalScreenProvider(): AbstractStaticPluginMainMenuProvider {
 		global $DIC;

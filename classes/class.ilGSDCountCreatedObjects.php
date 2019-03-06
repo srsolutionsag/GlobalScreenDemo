@@ -1,6 +1,6 @@
 <?php
 
-use ILIAS\GlobalScreen\MainMenu\AbstractChildItem;
+use ILIAS\GlobalScreen\Scope\MainMenu\Factory\AbstractChildItem;
 use ILIAS\UI\Component\Component;
 
 /**
