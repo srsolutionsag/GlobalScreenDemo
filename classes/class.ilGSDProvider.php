@@ -1,9 +1,9 @@
 <?php
 
-use ILIAS\GlobalScreen\Collector\MainMenu\Information\TypeInformation;
-use ILIAS\GlobalScreen\Collector\MainMenu\Information\TypeInformationCollection;
 use ILIAS\GlobalScreen\Identification\IdentificationInterface;
-use ILIAS\GlobalScreen\Provider\StaticProvider\AbstractStaticPluginMainMenuProvider;
+use ILIAS\GlobalScreen\Scope\MainMenu\Collector\Information\TypeInformation;
+use ILIAS\GlobalScreen\Scope\MainMenu\Collector\Information\TypeInformationCollection;
+use ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider;
 
 /**
  * Class ilGSDProvider
