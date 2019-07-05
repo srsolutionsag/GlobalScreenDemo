@@ -9,26 +9,33 @@ use ILIAS\UI\Component\Component;
  *
  * @author Fabian Schmid <fs@studer-raimann.ch>
  */
-class ilGSDPictureOfTheDayRenderer extends BaseTypeRenderer {
+class ilGSDPictureOfTheDayRenderer extends BaseTypeRenderer
+{
 
-	/**
-	 * @inheritdoc
-	 *
-	 * Just return the UI-Component for your Special type
-	 */
-	public function getComponentForItem(isItem $item): Component {
-		global $DIC;
+    /**
+     * @inheritdoc
+     *
+     * Just return the UI-Component for your Special type
+     */
+    public function getComponentForItem(isItem $item) : Component
+    {
+        global $DIC;
 
-		/**
-		 * @var $item ilGSDPictureOfTheDay
-		 */
-		return $this->ui_factory->legacy(
-			"<style>
+        /**
+         * @var $item ilGSDPictureOfTheDay
+         */
+        $uf = $this->ui_factory;
+
+        return $uf->mainControls()->slate()->legacy(
+            "gspod",
+            $uf->symbol()->glyph()->eyeopen(),
+            $uf->legacy(
+                "<style>
 					.xdemo_type img {
-					width: 250px;
+					width: 100%;
 					height: auto;
 					}
 </style><div class='xdemo_type'>{$DIC->ui()->renderer()->render($item->getPictureOfTheDayAsComponent())}</div>"
-		);
-	}
+            ))->withEngaged(true);
+    }
 }
