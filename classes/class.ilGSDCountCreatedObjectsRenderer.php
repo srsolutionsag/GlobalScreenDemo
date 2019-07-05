@@ -21,6 +21,10 @@ class ilGSDCountCreatedObjectsRenderer extends BaseTypeRenderer
         /**
          * @var $item ilGSDCountCreatedObjects
          */
-        return $item->getStringWithTheAmountOfCreatedILIASObjectsInThisSessionAsComponent();
+        return $this->ui_factory->mainControls()->slate()->legacy(
+            "gsco",
+            $this->ui_factory->symbol()->glyph()->user(),
+            $item->getStringWithTheAmountOfCreatedILIASObjectsInThisSessionAsComponent()
+        )->withEngaged(true);
     }
 }

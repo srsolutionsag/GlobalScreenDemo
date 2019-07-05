@@ -1,7 +1,7 @@
 <?php
 
 use ILIAS\GlobalScreen\Scope\MainMenu\Factory\AbstractChildItem;
-use ILIAS\UI\Component\Component;
+use ILIAS\UI\Component\Legacy\Legacy;
 
 /**
  * Class ilGSDCountCreatedObjects
@@ -12,9 +12,9 @@ class ilGSDCountCreatedObjects extends AbstractChildItem
 {
 
     /**
-     * @return Component
+     * @return Legacy
      */
-    public function getStringWithTheAmountOfCreatedILIASObjectsInThisSessionAsComponent() : Component
+    public function getStringWithTheAmountOfCreatedILIASObjectsInThisSessionAsComponent() : Legacy
     {
         $counter = (int) ilSession::get('xdemo_created_objects');
         global $DIC;

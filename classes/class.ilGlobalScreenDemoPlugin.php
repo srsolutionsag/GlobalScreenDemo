@@ -20,7 +20,6 @@ class ilGlobalScreenDemoPlugin extends ilEventHookPlugin
     const PLUGIN_ID = "gsdemo";
     const PLUGIN_NAME = "GlobalScreenDemo";
     const PLUGIN_CLASS_NAME = self::class;
-    const REMOVE_PLUGIN_DATA_CONFIRM_CLASS_NAME = GlobalScreenDemoRemoveDataConfirm::class;
     /**
      * @var self|null
      */
@@ -59,7 +58,7 @@ class ilGlobalScreenDemoPlugin extends ilEventHookPlugin
 
 
     /**
-     * @return \ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider|void
+     * @return AbstractStaticPluginMainMenuProvider
      */
     public function promoteGlobalScreenProvider() : AbstractStaticPluginMainMenuProvider
     {

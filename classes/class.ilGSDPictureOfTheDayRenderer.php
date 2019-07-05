@@ -24,13 +24,18 @@ class ilGSDPictureOfTheDayRenderer extends BaseTypeRenderer
         /**
          * @var $item ilGSDPictureOfTheDay
          */
-        return $this->ui_factory->legacy(
-            "<style>
+        $uf = $this->ui_factory;
+
+        return $uf->mainControls()->slate()->legacy(
+            "gspod",
+            $uf->symbol()->glyph()->eyeopen(),
+            $uf->legacy(
+                "<style>
 					.xdemo_type img {
-					width: 250px;
+					width: 100%;
 					height: auto;
 					}
 </style><div class='xdemo_type'>{$DIC->ui()->renderer()->render($item->getPictureOfTheDayAsComponent())}</div>"
-        );
+            ))->withEngaged(true);
     }
 }
