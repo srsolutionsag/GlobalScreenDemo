@@ -8,16 +8,18 @@ use ILIAS\UI\Component\Component;
  *
  * @author Fabian Schmid <fs@studer-raimann.ch>
  */
-class ilGSDCountCreatedObjects extends AbstractChildItem {
+class ilGSDCountCreatedObjects extends AbstractChildItem
+{
 
-	/**
-	 * @return Component
-	 */
-	public function getStringWithTheAmountOfCreatedILIASObjectsInThisSessionAsComponent(): Component {
-		$counter = (int)ilSession::get('xdemo_created_objects');
-		global $DIC;
-		$factory = $DIC->ui()->factory();
+    /**
+     * @return Component
+     */
+    public function getStringWithTheAmountOfCreatedILIASObjectsInThisSessionAsComponent() : Component
+    {
+        $counter = (int) ilSession::get('xdemo_created_objects');
+        global $DIC;
+        $factory = $DIC->ui()->factory();
 
-		return $factory->legacy("You created {$counter} Object(s) in this Session!");
-	}
+        return $factory->legacy("You created {$counter} Object(s) in this Session!");
+    }
 }

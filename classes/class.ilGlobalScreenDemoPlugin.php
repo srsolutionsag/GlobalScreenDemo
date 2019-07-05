@@ -14,77 +14,85 @@ require_once __DIR__ . "/../vendor/autoload.php";
  * @author studer + raimann ag - Team Custom 1 <support-custom1@studer-raimann.ch>
  * @author studer + raimann ag - Team Core 1 <support-core1@studer-raimann.ch>
  */
-class ilGlobalScreenDemoPlugin extends ilEventHookPlugin {
+class ilGlobalScreenDemoPlugin extends ilEventHookPlugin
+{
 
-	const PLUGIN_ID = "gsdemo";
-	const PLUGIN_NAME = "GlobalScreenDemo";
-	const PLUGIN_CLASS_NAME = self::class;
-	const REMOVE_PLUGIN_DATA_CONFIRM_CLASS_NAME = GlobalScreenDemoRemoveDataConfirm::class;
-	/**
-	 * @var self|null
-	 */
-	protected static $instance = null;
-
-
-	/**
-	 * @return self
-	 */
-	public static function getInstance(): self {
-		if (self::$instance === null) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
+    const PLUGIN_ID = "gsdemo";
+    const PLUGIN_NAME = "GlobalScreenDemo";
+    const PLUGIN_CLASS_NAME = self::class;
+    const REMOVE_PLUGIN_DATA_CONFIRM_CLASS_NAME = GlobalScreenDemoRemoveDataConfirm::class;
+    /**
+     * @var self|null
+     */
+    protected static $instance = null;
 
 
-	/**
-	 * ilGlobalScreenDemoPlugin constructor
-	 */
-	public function __construct() {
-		parent::__construct();
-	}
+    /**
+     * @return self
+     */
+    public static function getInstance() : self
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
 
 
-	/**
-	 * @return string
-	 */
-	public function getPluginName(): string {
-		return self::PLUGIN_NAME;
-	}
+    /**
+     * ilGlobalScreenDemoPlugin constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
 
-	/**
-	 * @return \ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider|void
-	 */
-	public function promoteGlobalScreenProvider(): AbstractStaticPluginMainMenuProvider {
-		global $DIC;
+    /**
+     * @return string
+     */
+    public function getPluginName() : string
+    {
+        return self::PLUGIN_NAME;
+    }
 
-		return new ilGSDProvider($DIC, $this);
-	}
+
+    /**
+     * @return \ILIAS\GlobalScreen\Scope\MainMenu\Provider\AbstractStaticPluginMainMenuProvider|void
+     */
+    public function promoteGlobalScreenProvider() : AbstractStaticPluginMainMenuProvider
+    {
+        global $DIC;
+
+        return new ilGSDProvider($DIC, $this);
+    }
 
 
-	/**
-	 * Why the heck we provide a EventHook-Plugin to demonstrate the possibilities
-	 * of the GlobalScreen-Service in Plugins? Just to show that every Plugin-Type
-	 * is capable of this and not just UIHook-Plugins.
-	 *
-	 * We just listen to the crete-Events for ILIAS-Objects and count them in
-	 * the current Session. This counter is the used in @see ilGSDCountCreatedObjects
-	 *
-	 * @param string $a_component
-	 * @param string $a_event
-	 * @param array  $a_parameter
-	 */
-	public function handleEvent(/*string*/
-		$a_component, /*string*/
-		$a_event,/*array*/
-		$a_parameter
-	)/*: void*/ {
-		if ($a_component === "Services/Object" && $a_event === "create") {
-			$counter = (int)ilSession::get('xdemo_created_objects');
-			$counter++;
-			ilSession::set('xdemo_created_objects', $counter);
-		}
-	}
+    /**
+     * Why the heck we provide a EventHook-Plugin to demonstrate the possibilities
+     * of the GlobalScreen-Service in Plugins? Just to show that every Plugin-Type
+     * is capable of this and not just UIHook-Plugins.
+     *
+     * We just listen to the crete-Events for ILIAS-Objects and count them in
+     * the current Session. This counter is the used in @param string $a_component
+     *
+     * @param string $a_event
+     * @param array  $a_parameter
+     *
+     * @see ilGSDCountCreatedObjects
+     *
+     */
+    public function handleEvent(/*string*/
+        $a_component, /*string*/
+        $a_event,/*array*/
+        $a_parameter
+    )/*: void*/
+    {
+        if ($a_component === "Services/Object" && $a_event === "create") {
+            $counter = (int) ilSession::get('xdemo_created_objects');
+            $counter++;
+            ilSession::set('xdemo_created_objects', $counter);
+        }
+    }
 }
